@@ -1,24 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { LoadingButton } from '@mui/lab';
-import { Autocomplete, TextField, Button, useMediaQuery, Box } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import React from 'react';
 import Header from '../components/header';
-import ProjectCard from '../components/projectCard';
 import Projects from '../components/projects';
 import About from '../components/about';
 import Footer from '../components/footer';
+import styled from 'styled-components';
+
 const axios = require('axios').default;
 
-function Homepage() {
+export const Homepage = () => {
+
+  const AppFrame = styled('div')(({ theme }) => ({
+    margin: '0 max(4vw, 20px)',
+  }));
 
   return (
     <React.Fragment>
       <Header />
-      <About />
-      <Projects />
-      <Footer />
+      <AppFrame>
+        <About />
+        <Projects />
+        <Footer />
+      </AppFrame>
     </React.Fragment>
   );
 }
-
-export default Homepage;

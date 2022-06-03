@@ -1,10 +1,10 @@
 import React from 'react';
+import { Section } from './section';
 
 export default function About() {
   return (
-    <React.Fragment>
-      <h1>About Me</h1>
+    <Section title='About Me'>
       <p>Some stuff about me</p>
-    </React.Fragment>
+    </Section>
   );
 }

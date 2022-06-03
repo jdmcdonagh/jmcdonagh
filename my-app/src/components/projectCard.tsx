@@ -4,16 +4,12 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faPlay } from '@fortawesome/free-solid-svg-icons'
 import { IconButton, Button, Card, CardMedia, CardContent, CardActions, Typography, Box } from '@mui/material';
 
-export default function ProjectCard() {
+type ProjectCardProps = {
+  type: string,
+  title: string,
+}
 
-  const bull = (
-    <Box
-      component="span"
-      sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-    >
-      •
-    </Box>
-  );
+export const ProjectCard = ({type, title}: ProjectCardProps)  => {
 
   return (
     <Card sx={{ minWidth: 200 }}>
@@ -25,10 +21,10 @@ export default function ProjectCard() {
       />
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Personal Project
+          {type}
         </Typography>
         <Typography sx={{ mb: 1.5, fontWeight: 'bold' }} variant="h5" component="div">
-          Title Text
+          {title}
         </Typography>
         <Typography>
           React, Typescript
@@ -40,5 +36,4 @@ export default function ProjectCard() {
       </CardActions>
     </Card>
   );
-
 }

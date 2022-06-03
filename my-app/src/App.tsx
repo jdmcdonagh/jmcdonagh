@@ -1,38 +1,46 @@
-import { useMemo, useEffect } from 'react';
+import React, { useState, useMemo, createContext } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
 } from "react-router-dom";
-import { Autocomplete, TextField, Button, useMediaQuery, IconButton } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import WikiConnect from './pages/wikiConnect';
-import Homepage from './pages/homepage';
+import { Homepage } from './pages/homepage';
+import IconButton from '@mui/material/IconButton';
+import Box from '@mui/material/Box';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { PaletteMode } from '@mui/material';
+import { customTheme } from './styles/palette';
 
-function App() {
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
-  console.log(prefersDarkMode)
-  const theme = useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode: 'light',
-          // mode: prefersDarkMode ? 'dark' : 'light',
-        },
-      }),
-    [prefersDarkMode],
+const ColorModeContext = createContext({ toggleColorMode: () => {} });
+
+export const ThemeToggle = () => {
+  const theme = useTheme();
+  const colorMode = React.useContext(ColorModeContext);
+  return (
+    <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+      {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+    </IconButton>
   );
+}
+
+export default function App() {
+
+  const [mode, setMode] = useState<PaletteMode>('light');
+
+  const colorMode = useMemo(() => ({
+      toggleColorMode: () => {
+        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+      },
+  }),[],);
+
+  const theme = React.useMemo(() => createTheme(customTheme(mode)), [mode]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <div
-        style={{
-          margin: '0 auto',
-          // maxWidth: 740,
-          padding: '0 10px',
-          // width: '100%',
-        }}
-      >
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
         <Router>
           <Routes>
             <Route path="/" element={<Homepage />} />
@@ -40,9 +48,7 @@ function App() {
             <Route path="/projects/wiki" element={<WikiConnect />} />
           </Routes>
         </Router>
-      </div>
-    </ThemeProvider>
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }
-
-export default App;
