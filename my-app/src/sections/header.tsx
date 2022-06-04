@@ -2,7 +2,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedinIn, faGithub, IconDefinition } from '@fortawesome/free-brands-svg-icons'
 import { faFileAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { IconButton } from '@mui/material';
-import { styled } from "@mui/system";
+// import { styled } from "@mui/system";
+import styled from 'styled-components';
 
 
 const NavBar = styled('nav')(({ theme }) => ({
@@ -11,7 +12,8 @@ const NavBar = styled('nav')(({ theme }) => ({
   justifyContent: 'space-around',
   alignItems: 'center',
   borderBottom: '0.5px solid #fff',
-  borderColor: theme.palette.divider,
+  // borderColor: theme.palette.divider,
+  borderColor: 'red',
   '@media (max-width: 768px)': {
     display: 'block'
   }
@@ -20,7 +22,8 @@ const NavBar = styled('nav')(({ theme }) => ({
 const Logo = styled('h1')(({ theme }) => ({
   margin: 0,
   padding: '14px 0',
-  color: theme.palette.text.secondary,
+  color: 'red',
+  // color: theme.palette.text.secondary,
   '@media (max-width: 768px)': {
     fontSize: 30,
     textAlign: 'center',
@@ -45,7 +48,7 @@ const Links = styled('a')(({ theme }) => ({
   marginRight: 20,
   cursor: 'pointer',
   'button > svg': {
-    color: theme.palette.text.secondary,
+    // color: theme.palette.text.secondary,
   }
 }));
 

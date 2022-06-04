@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faReact } from '@fortawesome/free-brands-svg-icons'
-import { ThemeToggle } from '../App';
 import { styled } from "@mui/system";
 
 
@@ -13,7 +12,8 @@ export default function Footer() {
     margin: '16px auto',
     width: 100,
     textAlign: 'center',
-    color: theme.palette.text.secondary,
+    // color: theme.palette.text.secondary,
+    color: 'red',
     cursor: 'pointer',
     ':hover': {
       opacity: 0.7,
@@ -26,7 +26,6 @@ export default function Footer() {
         {"Built using "}
         <FontAwesomeIcon icon={faReact} spin />
       </FooterText>
-      <ThemeToggle />
     </React.Fragment>
   );
 }

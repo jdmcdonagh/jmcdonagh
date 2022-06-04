@@ -4,44 +4,38 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import { Homepage } from './pages/homepage';
-import IconButton from '@mui/material/IconButton';
-import Box from '@mui/material/Box';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { PaletteMode } from '@mui/material';
-import { customTheme } from './styles/palette';
+import { ThemeProvider, useTheme } from "styled-components";
+import { lightTheme, darkTheme, GlobalStyles } from './styles/theme';
 
-const ColorModeContext = createContext({ toggleColorMode: () => {} });
+const ThemeModeContext = createContext({ toggleMode: () => {} });
 
 
 export const ThemeToggle = () => {
   const theme = useTheme();
-  const colorMode = React.useContext(ColorModeContext);
+  const themeMode = React.useContext(ThemeModeContext);
   return (
-    <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
-      {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-    </IconButton>
+    <button onClick={themeMode.toggleMode}>
+      Toggle Colour
+    </button>
   );
 }
 
 
 export default function App() {
 
-  const [mode, setMode] = useState<PaletteMode>('dark');
-
+  const [mode, setMode] = useState<'light'|'dark'>('dark');
+  const theme = React.useMemo(() => mode === 'light' ? lightTheme : darkTheme, [mode]);
   const colorMode = useMemo(() => ({
-      toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
-      },
+    toggleMode: () => {
+      setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+    },
   }),[],);
 
-  const theme = React.useMemo(() => createTheme(customTheme(mode)), [mode]);
-
   return (
-    <ColorModeContext.Provider value={colorMode}>
+    <ThemeModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
+        <GlobalStyles />
         <Router>
           <Routes>
             <Route path="/" element={<Homepage />} />
@@ -49,6 +43,6 @@ export default function App() {
           </Routes>
         </Router>
       </ThemeProvider>
-    </ColorModeContext.Provider>
+    </ThemeModeContext.Provider>
   );
 }

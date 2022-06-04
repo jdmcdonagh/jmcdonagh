@@ -9,7 +9,7 @@ export const Section = ({...props}) => {
   const Title = styled('h1')(({ theme }) => ({
     margin: '20px 0 14px 0',
     textAlign: 'center',
-    color: theme.palette.text.primary,
+    // color: theme.palette.text.primary,
   }));
 
   const Seperator = styled('hr')(({ theme }) => ({
@@ -18,7 +18,7 @@ export const Section = ({...props}) => {
     border: 0,
     height: 0,
     borderBottom: '1px solid #fff',
-    borderColor: theme.palette.divider,
+    // borderColor: theme.palette.divider,
   }));
 
   return (
