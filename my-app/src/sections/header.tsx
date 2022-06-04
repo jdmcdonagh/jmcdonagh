@@ -1,6 +1,6 @@
-import React , { useEffect, useRef, useState }from 'react';
+import { useEffect, useRef }from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLinkedinIn, faGithub, IconDefinition } from '@fortawesome/free-brands-svg-icons'
+import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faFileAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components';
 import { Theme } from '../styles/theme';
@@ -94,7 +94,7 @@ export default function Header() {
         {links &&
           links.map((l: any, i: number) => (
             <Links ref={el => revealIcons.current[i] = el}>
-              <a onClick={() => window.open(l.link, '_blank')}>
+              <a href={l.link} target='_blank' rel='noreferrer'>
                 <FontAwesomeIcon icon={l.icon}/>
               </a>
             </Links>

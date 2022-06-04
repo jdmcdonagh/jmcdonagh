@@ -1,7 +1,5 @@
-import { useEffect, useState } from 'react';
 import Header from '../sections/header';
 import Projects from '../sections/projects';
-import About from '../sections/about';
 import Footer from '../sections/footer';
 import styled from 'styled-components';
 
@@ -14,7 +12,6 @@ const Frame = styled.div`
 `;
 
 export const Homepage = () => {
-
   return (
     <Wrapper>
       <Header />

@@ -1,7 +1,3 @@
-import React, { useState, useEffect, forwardRef } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Button, Card, CardContent, CardActions, Typography } from '@mui/material';
-import { Project, ProjectButton } from '../data/projects';
 import styled from "styled-components";
 import { Theme } from '../styles/theme';
 
@@ -104,7 +100,7 @@ export const ProjectCard = ({...props}: any)  => {
         <div className='project-heading'>
           <p className='project-type'>{props.type}</p>
           <h3 className='project-title'>
-            <a href='#'>
+            <a href='www.google.com'>
               {props.title}
             </a>
           </h3>
@@ -120,10 +116,10 @@ export const ProjectCard = ({...props}: any)  => {
             ))}
           </ul>
           <div className='project-links'>
-            <a>
+            <a href='www.google.com'>
               Link
             </a>
-            <a>
+            <a href='www.google.com'>
               Link
             </a>
           </div>

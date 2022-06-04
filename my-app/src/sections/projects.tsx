@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { ProjectCard } from '../components/projectCard';
 import { Section } from '../components/section';
 import { projectData } from '../data/projects';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { srConfig, PROJECT_DEFAULT_DISPLAY } from '../config';
 import { Theme } from '../styles/theme';
 import styled from 'styled-components';
