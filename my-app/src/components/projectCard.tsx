@@ -7,7 +7,6 @@ const StyledProjectCard = styled('li')(({theme}: {theme: Theme}) => (`
   display: grid;
   background: ${theme.palette.primary.light};
   cursor: pointer;
-  transition: all ${theme.transitions.duration.enteringScreen}ms ${theme.transitions.easing.inOut};
   border-radius: 4px;
 
   &:hover,

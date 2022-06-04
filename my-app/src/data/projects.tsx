@@ -82,7 +82,11 @@ export const projectData: Project[] = [
       color: 'blue',
     },
     {
-      text: 'FEniCSx',
+      text: 'LongNameTesteradasd',
+      color: 'blue',
+    },
+    {
+      text: 'FEniddddddddCSx',
       color: 'yellow',
     }],
     buttons: [{

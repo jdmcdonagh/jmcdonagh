@@ -12,6 +12,7 @@ const NavBar = styled('nav')(({theme}: {theme: Theme}) => (`
   justify-content: space-around;
   align-items: center;
   border-bottom: 0.5px solid ${theme.palette.seperator};
+
   ${theme.media.mobile} {
     display: block;
   };
@@ -21,6 +22,12 @@ const Logo = styled('h1')(({theme}: {theme: Theme}) => (`
   margin: 0;
   padding: 14px 0;
   color: ${theme.palette.text.secondary};
+  cursor: pointer;
+
+  &:hover {
+    color: ${theme.palette.other.blue};
+  };
+
   ${theme.media.mobile} {
     font-size: 30;
     text-align: center;
@@ -44,8 +51,13 @@ const Links = styled('div')(({theme}: {theme: Theme}) => (`
   margin-left: 20px;
   margin-right: 20px;
   cursor: pointer;
+
   svg {
     color: ${theme.palette.text.secondary};
+    font-size: ${theme.size.text.lg};
+    &:hover {
+      color: ${theme.palette.other.blue};
+    };
   };
 `));
 

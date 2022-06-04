@@ -21,7 +21,7 @@ const FooterText = styled('p')(({theme}: {theme: Theme}) => (`
   color: ${theme.palette.text.secondary};
   cursor: pointer;
   &:hover {
-    opacity: 0.7;
+    color: ${theme.palette.other.blue};
   }
 `));
 

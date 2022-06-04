@@ -58,22 +58,20 @@ export default function Projects() {
     <StyledProjectsSection>
       <Section title="Projects">
         <ul className="project-grid">
-            {displayedProjects &&
-              displayedProjects.map((p, i) => (
-                <div 
-                  key={i}
-                  ref={(el: any) => (revealProjects.current[i] = el)}
-                  style={{
-                    transitionDelay: `${i >= PROJECT_DEFAULT_DISPLAY ? (i - PROJECT_DEFAULT_DISPLAY) * 100 : 0}ms`,
-                  }}>
-                  <ProjectCard
-                    type={p.type}
-                    title={p.title}
-                    stack={p.stack}
-                    buttons={p.buttons}
-                  />
-                </div>
-              ))}
+          {displayedProjects &&
+            displayedProjects.map((p, i) => (
+              <div
+                style={{display: 'grid'}} 
+                key={i}
+                ref={(el: any) => (revealProjects.current[i] = el)}>
+                <ProjectCard
+                  type={p.type}
+                  title={p.title}
+                  stack={p.stack}
+                  buttons={p.buttons}
+                />
+              </div>
+            ))}
         </ul>
       </Section>
     </StyledProjectsSection>
