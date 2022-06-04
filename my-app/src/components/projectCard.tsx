@@ -1,154 +1,177 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button, Card, CardContent, CardActions, Typography } from '@mui/material';
 import { Project, ProjectButton } from '../data/projects';
 import styled from "styled-components";
+import { Theme } from '../styles/theme';
 
-// const StyledCard = styled(Card)(({ theme }: any) => ({
-//   background: theme.palette.secondary.light,
-//   transition: `all ${theme.transitions.duration.enteringScreen}ms ${theme.transitions.easing.sharp}`,
-//   border: '1px solid #fff',
-//   borderColor: theme.palette.divider,
-//   boxShadow: theme.shadows[3],
-//   cursor: 'pointer',
-//   '&:hover, &:focus-within': {
-//     transform: 'translateY(-7px)',
-//     boxShadow: theme.shadows[9],
-//   }
-// }));
 
-// const StyledStackItem = styled('p')(({ theme }: any) => ({
-//   display: 'inline',
-//   marginRight: 6,
-//   marginBottom: -1, 
-//   fontWeight: 'bold',
-//   color: 'red',
-// }));
-
-const StyledProject = styled.li`
+const StyledProjectCard = styled('li')(({theme}: {theme: Theme}) => (`
   position: relative;
-  cursor: default;
-  transition: var(--transition);
-  @media (prefers-reduced-motion: no-preference) {
-    &:hover,
-    &:focus-within {
-      .project-inner {
-        transform: translateY(-7px);
-      }
+  display: grid;
+  background: ${theme.palette.primary.light};
+  cursor: pointer;
+  transition: all ${theme.transitions.duration.enteringScreen}ms ${theme.transitions.easing.inOut};
+  border-radius: 4px;
+
+  &:hover,
+  &:focus-within {
+    transform: translateY(-7px);
+    .project-content {
+      box-shadow: ${theme.shadow[1]};
+    }
+    .project-title {
+      color: ${theme.palette.text.secondary};
     }
   }
-  a {
-    position: relative;
-    z-index: 1;
-  }
-  .project-inner {
+
+  .project-content {
+    padding: 30px;
+    display: flex
+    justify-content: space-between;
+    box-shadow: ${theme.shadow[0]};
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
     flex-direction: column;
     align-items: flex-start;
     position: relative;
     height: 100%;
     padding: 2rem 1.75rem;
-    border-radius: var(--border-radius);
-    background-color: var(--light-navy);
-    transition: var(--transition);
   }
-  .project-top {
-    margin-bottom: 35px;
-    .folder {
-      color: var(--green);
-      svg {
-        width: 40px;
-        height: 40px;
-      }
-    }
-    .project-links {
-      display: flex;
-      align-items: center;
-      margin-right: -10px;
-      color: var(--light-slate);
-      a {
-        padding: 5px 7px;
-        &.external {
-          svg {
-            width: 22px;
-            height: 22px;
-            margin-top: -4px;
-          }
-        }
-        svg {
-          width: 20px;
-          height: 20px;
-        }
-      }
-    }
+
+  .project-type {
+    margin: 10px 0;
+    color: ${theme.palette.text.secondary};
+    font-size: ${theme.size.text.sm};
   }
+  
   .project-title {
     margin: 0 0 10px;
-    color: var(--lightest-slate);
-    font-size: var(--fz-xxl);
-    a {
-      position: static;
-      &:before {
-        content: '';
-        display: block;
-        position: absolute;
-        z-index: 0;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-      }
-    }
+    font-size: ${theme.size.text.xxl};
   }
+  
   .project-description {
-    color: var(--light-slate);
-    font-size: 17px;
-    a {
+    padding: 20px 0;
+    font-size: ${theme.size.text.md};
+    p {
+      margin: 0;
     }
   }
-  .project-tech-list {
-    display: flex;
-    align-items: flex-end;
-    flex-grow: 1;
-    flex-wrap: wrap;
+
+  .project-stack {
+    margin: 10px 0;
     padding: 0;
-    margin: 20px 0 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
     list-style: none;
+
     li {
-      font-family: var(--font-mono);
-      font-size: var(--fz-xxs);
-      line-height: 1.75;
-      &:not(:last-of-type) {
-        margin-right: 15px;
-      }
+      margin: 0 10px 5px 0;
+      font-size: ${theme.size.text.xs};
+      white-space: nowrap;
     }
   }
-`;
 
-export const ProjectCard = ({type, title, stack, buttons}: Project)  => {
+  .project-links {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    margin-top: 10px;
+    margin-left: -10px;
+    color: ${theme.palette.secondary.lighter};
 
-  // const CardButton = ({text, link, variant, icon}: ProjectButton) => {
-  //   return (
-  //     <Button 
-  //       size="small" 
-  //       variant={variant}
-  //       endIcon={icon && <FontAwesomeIcon icon={icon}/>}
-  //       onClick={link ? () => window.open(link, '_blank') : undefined}
-  //     >
-  //       {text}
-  //     </Button>
-  //   );
-  // };
+    a {
+      display: flex;
+      -webkit-box-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      align-items: center;
+      padding: 10px;
+    }
+  }
 
-  // type StackItemProps = {
-  //   text: string,
-  //   color: string,
-  // };
+`));
 
-  // const StackItem = ({text, color}: StackItemProps) => (
-  //   <StyledStackItem color={color}>{text}</StyledStackItem> 
-  // );
 
+export const ProjectCard = ({...props}: any)  => {
   return (
-    <StyledProject>test</StyledProject>
+    <StyledProjectCard>
+      <div className='project-content'>
+        <div className='project-heading'>
+          <p className='project-type'>{props.type}</p>
+          <h3 className='project-title'>
+            <a href='#'>
+              {props.title}
+            </a>
+          </h3>
+        </div>
+        <div className='project-mid'>
+          <div className='project-description'>
+            <p>A web app for visualizing personalized Spotify data. View your top artists, top and detailed audio information about each track.</p>
+          </div>
+          <ul className='project-stack'>
+            {props.stack &&
+              props.stack.map((s: any, i: number) => (
+                <li key={i}>{s.text}</li>
+            ))}
+          </ul>
+          <div className='project-links'>
+            <a>
+              Link
+            </a>
+            <a>
+              Link
+            </a>
+          </div>
+        </div>
+      </div>
+    </StyledProjectCard>
   );
-}
+
+  // return (
+  //   <StyledProjectCard {...props}>
+  //     <div className="project-inner">
+  //       <header>
+  //         <div className="project-top">
+  //           <div className="folder">
+  //             <p>fol</p>
+  //           </div>
+  //           <div className="project-links">
+  //             <a aria-label="GitHub Link" target="_blank" rel="noreferrer">
+  //               <p>gh</p>
+  //             </a>
+  //             <a
+  //               aria-label="External Link"
+  //               className="external"
+  //               target="_blank"
+  //               rel="noreferrer">
+  //               <p>ex</p>
+  //             </a>
+  //           </div>
+  //         </div>
+
+  //         <h3 className="project-title">
+  //           <a target="_blank" rel="noreferrer">
+  //             {props.title}
+  //           </a>
+  //         </h3>
+
+  //       </header>
+
+  //       <footer>
+  //         {props.stack && (
+  //           <ul className="project-tech-list">
+  //             {props.stack.map((t: any, i: number) => (
+  //               <li key={i}>test</li>
+  //             ))}
+  //           </ul>
+  //         )}
+  //       </footer>
+  //     </div>
+  //   </StyledProjectCard>
+  // );
+};

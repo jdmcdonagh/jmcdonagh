@@ -1,31 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faReact } from '@fortawesome/free-brands-svg-icons'
-import { styled } from "@mui/system";
+import React, { useEffect, useRef } from 'react';
+import styled from "styled-components";
+import { Theme } from '../styles/theme';
+import sr from '../utils/sr';
+import { srConfig } from '../config';
 
+const Title = styled('h1')(({theme}: {theme: Theme}) => (`
+  margin: 50px 0 40px 0;
+  text-align: center;
+  color: ${theme.palette.text.primary};
+  font-size: ${theme.size.text.heading};
+`));
 
 export const Section = ({...props}) => {
 
-  const Title = styled('h1')(({ theme }) => ({
-    margin: '20px 0 14px 0',
-    textAlign: 'center',
-    // color: theme.palette.text.primary,
-  }));
+  const revealTitle = useRef<any>(null);
 
-  const Seperator = styled('hr')(({ theme }) => ({
-    marginTop: 20,
-    marginBottom: 0,
-    border: 0,
-    height: 0,
-    borderBottom: '1px solid #fff',
-    // borderColor: theme.palette.divider,
-  }));
+  useEffect(() => {
+    sr!.reveal(revealTitle.current, srConfig({delay: 700}));
+  }, []);
 
   return (
     <React.Fragment>
-      <Title>{props.title}</Title>
+      <Title ref={revealTitle}>{props.title}</Title>
       {props.children}
-      <Seperator />
     </React.Fragment>
   );
 }

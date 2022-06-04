@@ -1,58 +1,65 @@
+import React , { useEffect, useRef, useState }from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedinIn, faGithub, IconDefinition } from '@fortawesome/free-brands-svg-icons'
 import { faFileAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import { IconButton } from '@mui/material';
-// import { styled } from "@mui/system";
 import styled from 'styled-components';
+import { Theme } from '../styles/theme';
+import { srConfig } from '../config';
+import sr from '../utils/sr';
 
+const NavBar = styled('nav')(({theme}: {theme: Theme}) => (`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 0.5px solid ${theme.palette.seperator};
+  ${theme.media.mobile} {
+    display: block;
+  };
+`));
 
-const NavBar = styled('nav')(({ theme }) => ({
-  background: theme.palette.background.default,
-  display: 'flex',
-  justifyContent: 'space-around',
-  alignItems: 'center',
-  borderBottom: '0.5px solid #fff',
-  // borderColor: theme.palette.divider,
-  borderColor: 'red',
-  '@media (max-width: 768px)': {
-    display: 'block'
-  }
-}));
+const Logo = styled('h1')(({theme}: {theme: Theme}) => (`
+  margin: 0;
+  padding: 14px 0;
+  color: ${theme.palette.text.secondary};
+  ${theme.media.mobile} {
+    font-size: 30;
+    text-align: center;
+  };
+`));
 
-const Logo = styled('h1')(({ theme }) => ({
-  margin: 0,
-  padding: '14px 0',
-  color: 'red',
-  // color: theme.palette.text.secondary,
-  '@media (max-width: 768px)': {
-    fontSize: 30,
-    textAlign: 'center',
-  }
-}));
+const List = styled('ul')(({theme}: {theme: Theme}) => (`
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  ${theme.media.mobile} {
+    padding: 4px 0 8px 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  };
+`));
 
-const List = styled('ul')(({ theme }) => ({
-  padding: 0,
-  margin: 0,
-  listStyleType: 'none',
-  '@media (max-width: 768px)': {
-    textAlign: 'center',
-    display: 'flex',
-    justifyContent: 'center',
-    padding: '4px 0 8px 0',
-  }
-}));
-
-const Links = styled('a')(({ theme }) => ({
-  display: 'inline-block',
-  marginLeft: 20,
-  marginRight: 20,
-  cursor: 'pointer',
-  'button > svg': {
-    // color: theme.palette.text.secondary,
-  }
-}));
+const Links = styled('div')(({theme}: {theme: Theme}) => (`
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+  svg {
+    color: ${theme.palette.text.secondary};
+  };
+`));
 
 export default function Header() {
+
+  const revealLogo = useRef<any>(null);
+  const revealIcons = useRef<any>([]);
+
+  useEffect(() => {
+    sr!.reveal(revealLogo.current, srConfig({origin: 'top'}));
+    revealIcons.current.forEach((ref: any, i: number) => 
+      sr!.reveal(ref, srConfig({origin: 'top', delay: i * 100 + 300}))
+    );
+  }, []);
 
   const user1 = 'jmcdonagh';
   const user2 = 'jdmcdonagh';
@@ -61,31 +68,37 @@ export default function Header() {
   const emLink = `mailto:me@${user1}.com`;
   const cvLink = `/cv`;
 
-  type IconProps = {
-    icon: IconDefinition,
-    desc: string,
-    link: string,
-  }
-
-  const IconLink = ({icon, desc, link}: IconProps) => {
-    return (
-      <Links>
-        <IconButton aria-label={desc} size='small' onClick={() => window.open(link, '_blank')}>
-          <FontAwesomeIcon icon={icon}/>
-        </IconButton>
-      </Links>
-  )};
+  const links = [
+    {
+      icon: faGithub,
+      link: ghLink,
+    },
+    {
+      icon: faLinkedinIn,
+      link: liLink,
+    },
+    {
+      icon: faEnvelope,
+      link: emLink,
+    },
+    {
+      icon: faFileAlt,
+      link: cvLink,
+    },
+  ];
 
   return (
     <NavBar>
-      <Logo>
-        James McDonagh
-      </Logo>
+      <Logo ref={revealLogo}>James McDonagh</Logo>
       <List>
-        <IconLink icon={faGithub}     desc="GitHub"   link={ghLink} />
-        <IconLink icon={faLinkedinIn} desc="LinkedIn" link={liLink} />
-        <IconLink icon={faEnvelope}   desc="Email"    link={emLink} />
-        <IconLink icon={faFileAlt}    desc="CV"       link={cvLink}/>
+        {links &&
+          links.map((l: any, i: number) => (
+            <Links ref={el => revealIcons.current[i] = el}>
+              <a onClick={() => window.open(l.link, '_blank')}>
+                <FontAwesomeIcon icon={l.icon}/>
+              </a>
+            </Links>
+        ))}
       </List>
     </NavBar>
   );

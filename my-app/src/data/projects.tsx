@@ -28,6 +28,14 @@ export const projectData: Project[] = [
       color: 'blue',
     },
     {
+      text: 'LongNameTesteradasd',
+      color: 'blue',
+    },
+    {
+      text: 'Py3',
+      color: 'blue',
+    },
+    {
       text: 'FEniCSx',
       color: 'yellow',
     }],
@@ -63,6 +71,75 @@ export const projectData: Project[] = [
     {
       text: 'Learn More',
       link: 'https://enablingthefuture.org/',
+      variant: 'contained',
+    }],
+  },
+  {
+    type: 'Personal Project',
+    title: 'Code',
+    stack: [{
+      text: 'Py3',
+      color: 'blue',
+    },
+    {
+      text: 'FEniCSx',
+      color: 'yellow',
+    }],
+    buttons: [{
+      text: 'GitHub',
+      link: 'https://github.com/jdmcdonagh',
+      variant: 'outlined',
+      icon: faGithub,
+    },
+    {
+      text: 'View Demo',
+      link: 'https://github.com/jdmcdonagh',
+      variant: 'contained',
+    }],
+  },
+  {
+    type: 'Personal Project',
+    title: 'Code',
+    stack: [{
+      text: 'Py3',
+      color: 'blue',
+    },
+    {
+      text: 'FEniCSx',
+      color: 'yellow',
+    }],
+    buttons: [{
+      text: 'GitHub',
+      link: 'https://github.com/jdmcdonagh',
+      variant: 'outlined',
+      icon: faGithub,
+    },
+    {
+      text: 'View Demo',
+      link: 'https://github.com/jdmcdonagh',
+      variant: 'contained',
+    }],
+  },
+  {
+    type: 'Personal Project',
+    title: 'Code',
+    stack: [{
+      text: 'Py3',
+      color: 'blue',
+    },
+    {
+      text: 'FEniCSx',
+      color: 'yellow',
+    }],
+    buttons: [{
+      text: 'GitHub',
+      link: 'https://github.com/jdmcdonagh',
+      variant: 'outlined',
+      icon: faGithub,
+    },
+    {
+      text: 'View Demo',
+      link: 'https://github.com/jdmcdonagh',
       variant: 'contained',
     }],
   },

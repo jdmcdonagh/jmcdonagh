@@ -1,73 +1,82 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Grid, Box } from '@mui/material';
 import { ProjectCard } from '../components/projectCard';
 import { Section } from '../components/section';
 import { projectData } from '../data/projects';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { styled } from "@mui/system";
+import { srConfig, PROJECT_DEFAULT_DISPLAY } from '../config';
+import { Theme } from '../styles/theme';
+import styled from 'styled-components';
 import sr from '../utils/sr';
-import cfg from '../config';
+
+const StyledProjectsSection = styled('section')(({theme}: {theme: Theme}) => (`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .project-grid {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 15px;
+  }
+`));
 
 export default function Projects() {
 
-  const revealTitle = useRef<any>(null);
   const revealProjects = useRef<any[]>([]);
 
   useEffect(() => {
-    sr!.reveal(revealTitle.current, cfg.sr());
     revealProjects.current.forEach((ref, i) => 
-      sr!.reveal(ref, cfg.sr(i * 100))
+      sr!.reveal(ref, srConfig({delay: i * 100 + 800}))
     );
   }, []);
 
-  const displayedProjects = projectData.slice(0, cfg.PROJECT_DEFAULT_DISPLAY);
+  const displayedProjects = projectData.slice(0, PROJECT_DEFAULT_DISPLAY);
 
   // return (
-  //   <Section title="What I've Done">
-  //     <h1 ref={revealTitle} style={{color: 'white'}}>test</h1>
-  //     <Box sx={{ flexGrow: 1 }}>
-  //       <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 2, sm: 8, md: 12 }}>
-  //         <TransitionGroup component={null}>
-  //           {displayedProjects &&
-  //             displayedProjects.map((p, i) => (
-  //               <CSSTransition
-  //                 key={i}
-  //                 classNames="fadeup"
-  //                 timeout={i >= cfg.PROJECT_DEFAULT_DISPLAY ? (i - cfg.PROJECT_DEFAULT_DISPLAY) * 300 : 300}
-  //                 exit={false}>
-  //                 <div 
-  //                   key={i}
-  //                   ref={el => (revealProjects.current[i] = el)}
-  //                   style={{
-  //                     transitionDelay: `${i >= cfg.PROJECT_DEFAULT_DISPLAY ? (i - cfg.PROJECT_DEFAULT_DISPLAY) * 100 : 0}ms`,
-  //                     color: 'white',
-  //                   }}>Test Item</div>
-  //               </CSSTransition>
-  //             ))}
-  //         </TransitionGroup>
-  //       </Grid>
-  //     </Box>
-  //   </Section>
+  //   <StyledProjectsSection>
+  //     <Section title="Projects">
+  //       <ul className="project-grid">
+  //         {displayedProjects &&
+  //           displayedProjects.map((p, i) => (
+  //             <ProjectCard
+  //               key={i}
+  //               type={p.type}
+  //               title={p.title}
+  //               stack={p.stack}
+  //               buttons={p.buttons}
+  //             />
+  //           ))}
+  //       </ul>
+  //     </Section>
+  //   </StyledProjectsSection>
   // );
 
   return (
-    <Section title="What I've Done">
-      <h1 ref={revealTitle} style={{color: 'white'}}>test</h1>
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 2, sm: 8, md: 12 }}>
-          {displayedProjects.map((p, i) => 
-            <Grid item xs={2} sm={4} md={4} key={i}>
-              <ProjectCard 
-                type={p.type}
-                title={p.title}
-                stack={p.stack}
-                buttons={p.buttons}
-              />
-            </Grid>
-          )}
-        </Grid>
-      </Box>
-    </Section>
+    <StyledProjectsSection>
+      <Section title="Projects">
+        <ul className="project-grid">
+            {displayedProjects &&
+              displayedProjects.map((p, i) => (
+                <div 
+                  key={i}
+                  ref={(el: any) => (revealProjects.current[i] = el)}
+                  style={{
+                    transitionDelay: `${i >= PROJECT_DEFAULT_DISPLAY ? (i - PROJECT_DEFAULT_DISPLAY) * 100 : 0}ms`,
+                  }}>
+                  <ProjectCard
+                    type={p.type}
+                    title={p.title}
+                    stack={p.stack}
+                    buttons={p.buttons}
+                  />
+                </div>
+              ))}
+        </ul>
+      </Section>
+    </StyledProjectsSection>
   );
-
 }

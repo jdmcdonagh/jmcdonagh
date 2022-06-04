@@ -1,19 +1,19 @@
-import React, { useState, useMemo, createContext } from 'react';
+import React, { useState, useMemo, useContext, createContext } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
+  useLocation
 } from "react-router-dom";
 import { Homepage } from './pages/homepage';
-import { ThemeProvider, useTheme } from "styled-components";
-import { lightTheme, darkTheme, GlobalStyles } from './styles/theme';
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from './styles/theme';
+import { GlobalStyles } from './styles/globalStyle';
 
 const ThemeModeContext = createContext({ toggleMode: () => {} });
 
-
 export const ThemeToggle = () => {
-  const theme = useTheme();
-  const themeMode = React.useContext(ThemeModeContext);
+  const themeMode = useContext(ThemeModeContext);
   return (
     <button onClick={themeMode.toggleMode}>
       Toggle Colour
@@ -21,11 +21,10 @@ export const ThemeToggle = () => {
   );
 }
 
-
 export default function App() {
 
   const [mode, setMode] = useState<'light'|'dark'>('dark');
-  const theme = React.useMemo(() => mode === 'light' ? lightTheme : darkTheme, [mode]);
+  const theme = useMemo(() => mode === 'dark' ? darkTheme : lightTheme, [mode]);
   const colorMode = useMemo(() => ({
     toggleMode: () => {
       setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
