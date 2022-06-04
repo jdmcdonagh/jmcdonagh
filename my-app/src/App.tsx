@@ -5,7 +5,6 @@ import {
   Route,
 } from "react-router-dom";
 import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
-import WikiConnect from './pages/wikiConnect';
 import { Homepage } from './pages/homepage';
 import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
@@ -15,6 +14,7 @@ import { PaletteMode } from '@mui/material';
 import { customTheme } from './styles/palette';
 
 const ColorModeContext = createContext({ toggleColorMode: () => {} });
+
 
 export const ThemeToggle = () => {
   const theme = useTheme();
@@ -26,9 +26,10 @@ export const ThemeToggle = () => {
   );
 }
 
+
 export default function App() {
 
-  const [mode, setMode] = useState<PaletteMode>('light');
+  const [mode, setMode] = useState<PaletteMode>('dark');
 
   const colorMode = useMemo(() => ({
       toggleColorMode: () => {
@@ -45,7 +46,6 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/projects" element={<Homepage />}/>
-            <Route path="/projects/wiki" element={<WikiConnect />} />
           </Routes>
         </Router>
       </ThemeProvider>

@@ -1,34 +1,55 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import { ThemeProvider, useTheme, createTheme } from '@mui/material/styles';
-import { amber, deepOrange, grey } from '@mui/material/colors';
-import { PaletteMode } from '@mui/material';
+import { PaletteMode, ThemeOptions } from '@mui/material';
+import { Shadows } from '@mui/material/styles/shadows';
 
-export const customTheme = (mode: PaletteMode) => ({
+
+export const customTheme = (mode: PaletteMode) => {
+  return (mode == 'light' ? lightMode : darkMode);
+};
+
+const lightMode: ThemeOptions = {
   palette: {
-    mode,
+    mode: 'light',
     primary: {
-      ...amber,
-      ...(mode === 'dark' && {
-        main: amber[300],
-      }),
+      main: '#fff',
     },
-    ...(mode === 'dark' && {
-      background: {
-        default: deepOrange[900],
-        paper: deepOrange[900],
-      },
-    }),
+    secondary: {
+      main: '#ffffff',
+    },
     text: {
-      ...(mode === 'light'
-        ? {
-            primary: grey[900],
-            secondary: grey[800],
-          }
-        : {
-            primary: '#fff',
-            secondary: grey[500],
-          }),
+      primary: '#000',
+      secondary: '#007FFF',
+    },
+    background: {
+      default: '#fff',
+      paper: '#fff',
     },
   },
-});
+};
+
+const darkMode: ThemeOptions = {
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#007FFF',
+      light: '#3398FF',
+      dark: '#0058B2',
+      contrastText: '#fff',
+    },
+    secondary: {
+      main: '#0A1929',
+      light: '#112240',
+      dark: '#07111C',
+      contrastText: '#fff',
+    },
+    text: {
+      primary: '#fff',
+      secondary: '#007FFF',
+    },
+    background: {
+      default: '#0A1929',
+      paper: '#fff',
+    },
+    divider: 'rgba(194, 224, 255, 0.08)',
+  },
+};
