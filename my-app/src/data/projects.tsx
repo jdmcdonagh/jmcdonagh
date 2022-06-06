@@ -45,7 +45,7 @@ export const projectData: Project[] = [
       'React', 
       'TypeScript', 
       'styled-components',
-      'GitHub Pages',
+      'Cloudflare',
     ],
     github: 'https://github.com/jdmcdonagh/jmcdonagh.com',
     external: 'https://jmcdonagh.com',
