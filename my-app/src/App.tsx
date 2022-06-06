@@ -1,6 +1,6 @@
 import { useState, useMemo, useContext, createContext } from 'react';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Routes,
   Route,
 } from "react-router-dom";
@@ -33,7 +33,7 @@ export default function App() {
     <ThemeModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <Router>
+        <Router basename="/index.html">
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/projects" element={<Homepage />}/>
