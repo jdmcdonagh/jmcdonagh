@@ -7,7 +7,7 @@ const StyledProjectCard = styled('li')(({theme}: {theme: Theme}) => (`
   cursor: pointer;
   border-radius: 4px;
   transition: ${theme.transitions.all};
-
+  
   &:hover,
   &:focus-within {
     transform: translateY(-7px);
@@ -18,7 +18,7 @@ const StyledProjectCard = styled('li')(({theme}: {theme: Theme}) => (`
       color: ${theme.palette.other.blue};
     }
   }
-
+  
   .project-content {
     position: relative;
     display: flex;
@@ -41,7 +41,7 @@ const StyledProjectCard = styled('li')(({theme}: {theme: Theme}) => (`
     font-size: ${theme.size.text.md};
     font-weight: 600;
   }
-
+  
   .project-links {
     display: flex;
     position: relative;
@@ -49,12 +49,17 @@ const StyledProjectCard = styled('li')(({theme}: {theme: Theme}) => (`
     align-items: center;
     color: ${theme.palette.secondary.lighter};
     font-size: ${theme.size.text.md};
-
+    
     a {
       display: flex;
+      padding: 10px;
       justify-content: center;
       align-items: center;
-      padding: 10px;
+      transition: ${theme.transitions.all};
+      &:hover,
+      &:focus-within {
+        color: ${theme.palette.other.blue};
+      }
     }
   }
 
@@ -93,17 +98,19 @@ const StyledProjectCard = styled('li')(({theme}: {theme: Theme}) => (`
 export const ProjectCard = ({...props}: any)  => {
   return (
     <StyledProjectCard>
-      <div className='project-content' onClick={() => window.open(props.links[1], "_blank")}>
+      <a className='project-content' href={props.external ? props.external : props.github} target='_blank' rel='noopener noreferrer'>
         <header className='project-heading'>
           <div className='project-top'>
             <p className='project-type'>{props.type}</p>
             <div className='project-links'>
-              <a href={props.links[0]} target='_blank' rel='noreferrer'>
+              <a href={props.github} target='_blank' rel='noopener noreferrer'>
                 <FaGithub />
               </a>
-              <a href={props.links[1]} target='_blank' rel='noreferrer'>
-                <FaExternalLinkAlt />
-              </a>
+              {props.external &&
+                <a href={props.external} target='_blank' rel='noopener noreferrer'>
+                  <FaExternalLinkAlt />
+                </a>
+              }
             </div>
           </div>
           <h3 className='project-title'>
@@ -123,7 +130,7 @@ export const ProjectCard = ({...props}: any)  => {
             ))}
           </ul>
         </footer>
-      </div>
+      </a>
     </StyledProjectCard>
   );
 };

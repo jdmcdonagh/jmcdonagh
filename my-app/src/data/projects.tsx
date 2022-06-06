@@ -3,8 +3,8 @@ export type Project = {
     title: string,
     description: string,
     stack: string[],
-    github: string,
-    external: string,
+    github?: string,
+    external?: string,
 }
 
 export const projectData: Project[] = [
@@ -48,6 +48,5 @@ export const projectData: Project[] = [
       'Cloudflare',
     ],
     github: 'https://github.com/jdmcdonagh/jmcdonagh.com',
-    external: 'https://jmcdonagh.com',
   },
 ];

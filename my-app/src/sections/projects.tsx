@@ -54,7 +54,8 @@ export default function Projects() {
                   title={p.title}
                   description={p.description}
                   stack={p.stack}
-                  links={[p.github, p.external]}
+                  github={p.github}
+                  external={p.external}
                 />
               </div>
             ))}

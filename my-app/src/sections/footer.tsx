@@ -42,7 +42,7 @@ const FooterText = styled('p')(({theme}: {theme: Theme}) => (`
 
 export default function Footer() {
   
-  const webRepo = "https://github.com/jdmcdonagh/react-site";
+  const webRepo = "https://github.com/jdmcdonagh/jmcdonagh.com";
   const revealFooter = useRef<any>(null);
 
   useEffect(() => {
