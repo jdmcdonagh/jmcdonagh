@@ -1,173 +1,53 @@
-import { faGithub } from '@fortawesome/free-brands-svg-icons'
-
-export type ProjectButton = {
-  text: string,
-  link: string,
-  variant: any,
-  icon?: any,
-}
-
-export type ProjectStackItem = {
-  text: string,
-  color: string,
-}
-
 export type Project = {
     type: string,
     title: string,
-    stack: ProjectStackItem[],
-    buttons: ProjectButton[],
+    description: string,
+    stack: string[],
+    github: string,
+    external: string,
 }
 
 export const projectData: Project[] = [
   {
     type: 'Journal Article',
     title: 'Electromagnetic Simulations',
-    stack: [{
-      text: 'Py3',
-      color: 'blue',
-    },
-    {
-      text: 'LongNameTesteradasd',
-      color: 'blue',
-    },
-    {
-      text: 'Py3',
-      color: 'blue',
-    },
-    {
-      text: 'FEniCSx',
-      color: 'yellow',
-    }],
-    buttons: [{
-      text: 'GitHub',
-      link: 'https://github.com/jdmcdonagh',
-      variant: 'outlined',
-      icon: faGithub,
-    },
-    {
-      text: 'Read Article',
-      link: 'https://doi.org/10.1016/j.finel.2022.103755',
-      variant: 'contained',
-    }],
+    description: 'A scalable computational model for simulating electric motors to support the electrification of heavy-duty vehicles and the aviation sector.',
+    stack: [
+      'Py3', 
+      'Scientific Computing', 
+      'FEniCSx', 
+      'Docker', 
+      'MPI', 
+      'Parallelisation', 
+      'HPC', 
+      'FEM',
+    ],
+    github: 'https://github.com/jdmcdonagh',
+    external: 'https://doi.org/10.1016/j.finel.2022.103755',
   },
   {
     type: 'Volunteering',
     title: '3D-Printed Prostheses',
-    stack: [{
-      text: 'Py3',
-      color: 'blue',
-    },
-    {
-      text: 'FEniCSx',
-      color: 'yellow',
-    }],
-    buttons: [{
-      text: 'GitHub',
-      link: 'https://github.com/jdmcdonagh',
-      variant: 'outlined',
-      icon: faGithub,
-    },
-    {
-      text: 'Learn More',
-      link: 'https://enablingthefuture.org/',
-      variant: 'contained',
-    }],
+    description: 'Member of the e-NABLE community who use 3D printing to provide affordable and personalised prosthetics to those with limb loss/differences.',
+    stack: [
+      '3D Printing', 
+      'CAD/CAM',
+      'Manufacturing',
+    ],
+    github: 'https://github.com/jdmcdonagh/3D-Printing',
+    external: 'https://enablingthefuture.org',
   },
   {
     type: 'Personal Project',
-    title: 'Code',
-    stack: [{
-      text: 'Py3',
-      color: 'blue',
-    },
-    {
-      text: 'LongNameTesteradasd',
-      color: 'blue',
-    },
-    {
-      text: 'FEniddddddddCSx',
-      color: 'yellow',
-    }],
-    buttons: [{
-      text: 'GitHub',
-      link: 'https://github.com/jdmcdonagh',
-      variant: 'outlined',
-      icon: faGithub,
-    },
-    {
-      text: 'View Demo',
-      link: 'https://github.com/jdmcdonagh',
-      variant: 'contained',
-    }],
-  },
-  {
-    type: 'Personal Project',
-    title: 'Code',
-    stack: [{
-      text: 'Py3',
-      color: 'blue',
-    },
-    {
-      text: 'FEniCSx',
-      color: 'yellow',
-    }],
-    buttons: [{
-      text: 'GitHub',
-      link: 'https://github.com/jdmcdonagh',
-      variant: 'outlined',
-      icon: faGithub,
-    },
-    {
-      text: 'View Demo',
-      link: 'https://github.com/jdmcdonagh',
-      variant: 'contained',
-    }],
-  },
-  {
-    type: 'Personal Project',
-    title: 'Code',
-    stack: [{
-      text: 'Py3',
-      color: 'blue',
-    },
-    {
-      text: 'FEniCSx',
-      color: 'yellow',
-    }],
-    buttons: [{
-      text: 'GitHub',
-      link: 'https://github.com/jdmcdonagh',
-      variant: 'outlined',
-      icon: faGithub,
-    },
-    {
-      text: 'View Demo',
-      link: 'https://github.com/jdmcdonagh',
-      variant: 'contained',
-    }],
-  },
-  {
-    type: 'Personal Project',
-    title: 'Code',
-    stack: [{
-      text: 'Py3',
-      color: 'blue',
-    },
-    {
-      text: 'FEniCSx',
-      color: 'yellow',
-    }],
-    buttons: [{
-      text: 'GitHub',
-      link: 'https://github.com/jdmcdonagh',
-      variant: 'outlined',
-      icon: faGithub,
-    },
-    {
-      text: 'View Demo',
-      link: 'https://github.com/jdmcdonagh',
-      variant: 'contained',
-    }],
+    title: 'jmcdonagh.com',
+    description: 'Personal website developed from the ground up using React to host my projects on.',
+    stack: [
+      'React', 
+      'TypeScript', 
+      'styled-components',
+      'GitHub Pages',
+    ],
+    github: 'https://github.com/jdmcdonagh/react-site',
+    external: 'https://jmcdonagh.com',
   },
 ];

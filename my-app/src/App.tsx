@@ -1,9 +1,8 @@
-import React, { useState, useMemo, useContext, createContext } from 'react';
+import { useState, useMemo, useContext, createContext } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  useLocation
 } from "react-router-dom";
 import { Homepage } from './pages/homepage';
 import { ThemeProvider } from "styled-components";
@@ -11,7 +10,6 @@ import { lightTheme, darkTheme } from './styles/theme';
 import { GlobalStyles } from './styles/globalStyle';
 
 const ThemeModeContext = createContext({ toggleMode: () => {} });
-
 export const ThemeToggle = () => {
   const themeMode = useContext(ThemeModeContext);
   return (

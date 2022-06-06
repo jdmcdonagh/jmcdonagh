@@ -1,7 +1,5 @@
 import { useEffect, useRef }from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons'
-import { faFileAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { FaGithub, FaLinkedinIn, FaEnvelope, FaFileAlt } from 'react-icons/fa';
 import styled from 'styled-components';
 import { Theme } from '../styles/theme';
 import { srConfig } from '../config';
@@ -18,14 +16,17 @@ const NavBar = styled('nav')(({theme}: {theme: Theme}) => (`
   };
 `));
 
-const Logo = styled('h1')(({theme}: {theme: Theme}) => (`
-  margin: 0;
-  padding: 14px 0;
-  color: ${theme.palette.text.secondary};
-  cursor: pointer;
+const Logo = styled('div')(({theme}: {theme: Theme}) => (`
+  h1 {
+    margin: 0;
+    padding: 14px 0;
+    color: ${theme.palette.text.secondary};
+    transition: ${theme.transitions.all};
+    cursor: pointer;
 
-  &:hover {
-    color: ${theme.palette.other.blue};
+    &:hover {
+      color: ${theme.palette.other.blue};
+    };
   };
 
   ${theme.media.mobile} {
@@ -38,6 +39,7 @@ const List = styled('ul')(({theme}: {theme: Theme}) => (`
   margin: 0;
   padding: 0;
   list-style-type: none;
+
   ${theme.media.mobile} {
     padding: 4px 0 8px 0;
     text-align: center;
@@ -55,6 +57,7 @@ const Links = styled('div')(({theme}: {theme: Theme}) => (`
   svg {
     color: ${theme.palette.text.secondary};
     font-size: ${theme.size.text.lg};
+    transition: ${theme.transitions.all};
     &:hover {
       color: ${theme.palette.other.blue};
     };
@@ -82,32 +85,34 @@ export default function Header() {
 
   const links = [
     {
-      icon: faGithub,
+      icon: <FaGithub />,
       link: ghLink,
     },
     {
-      icon: faLinkedinIn,
+      icon: <FaLinkedinIn />,
       link: liLink,
     },
     {
-      icon: faEnvelope,
+      icon: <FaEnvelope />,
       link: emLink,
     },
     {
-      icon: faFileAlt,
-      link: cvLink,
+      icon: <FaFileAlt />,
+      link: liLink,
     },
   ];
 
   return (
     <NavBar>
-      <Logo ref={revealLogo}>James McDonagh</Logo>
+      <Logo ref={revealLogo}>
+        <h1>James McDonagh</h1>
+      </Logo>
       <List>
         {links &&
           links.map((l: any, i: number) => (
-            <Links ref={el => revealIcons.current[i] = el}>
+            <Links key={i} ref={el => revealIcons.current[i] = el}>
               <a href={l.link} target='_blank' rel='noreferrer'>
-                <FontAwesomeIcon icon={l.icon}/>
+               {l.icon}
               </a>
             </Links>
         ))}

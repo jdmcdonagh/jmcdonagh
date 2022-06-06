@@ -23,7 +23,6 @@ export const GlobalStyles = createGlobalStyle(({theme}: {theme: Theme}) => (`
     text-decoration-skip-ink: auto;
     color: inherit;
     position: relative;
-    transition: ${theme.transitions.all};
   }
 
   body {

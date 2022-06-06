@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import { Theme } from '../styles/theme';
-
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 const StyledProjectCard = styled('li')(({theme}: {theme: Theme}) => (`
-  position: relative;
-  display: grid;
   background: ${theme.palette.primary.light};
   cursor: pointer;
   border-radius: 4px;
+  transition: ${theme.transitions.all};
 
   &:hover,
   &:focus-within {
@@ -16,40 +15,59 @@ const StyledProjectCard = styled('li')(({theme}: {theme: Theme}) => (`
       box-shadow: ${theme.shadow[1]};
     }
     .project-title {
-      color: ${theme.palette.text.secondary};
+      color: ${theme.palette.other.blue};
     }
   }
 
   .project-content {
+    position: relative;
+    display: flex;
+    height: 100%;
     padding: 30px;
-    display: flex
     justify-content: space-between;
     box-shadow: ${theme.shadow[0]};
-    display: flex;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: center;
     flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    height: 100%;
-    padding: 2rem 1.75rem;
   }
 
+  .project-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
   .project-type {
     margin: 10px 0;
     color: ${theme.palette.text.secondary};
-    font-size: ${theme.size.text.sm};
+    font-size: ${theme.size.text.md};
+    font-weight: 600;
   }
-  
+
+  .project-links {
+    display: flex;
+    position: relative;
+    margin: 5px 0 5px 10px;
+    align-items: center;
+    color: ${theme.palette.secondary.lighter};
+    font-size: ${theme.size.text.md};
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+  }
+
   .project-title {
+    transition: ${theme.transitions.all};
     margin: 0 0 10px;
     font-size: ${theme.size.text.xxl};
   }
-  
+
   .project-description {
     padding: 20px 0;
-    font-size: ${theme.size.text.md};
+    font-size: ${theme.size.text.sm};
+    color: ${theme.palette.secondary.light};
     p {
       margin: 0;
     }
@@ -62,6 +80,7 @@ const StyledProjectCard = styled('li')(({theme}: {theme: Theme}) => (`
     flex-wrap: wrap;
     position: relative;
     list-style: none;
+    color: ${theme.palette.secondary.light};
 
     li {
       margin: 0 10px 5px 0;
@@ -69,104 +88,42 @@ const StyledProjectCard = styled('li')(({theme}: {theme: Theme}) => (`
       white-space: nowrap;
     }
   }
-
-  .project-links {
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    position: relative;
-    margin-top: 10px;
-    margin-left: -10px;
-    color: ${theme.palette.secondary.lighter};
-
-    a {
-      display: flex;
-      -webkit-box-pack: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      align-items: center;
-      padding: 10px;
-    }
-  }
-
 `));
-
 
 export const ProjectCard = ({...props}: any)  => {
   return (
     <StyledProjectCard>
-      <div className='project-content'>
-        <div className='project-heading'>
-          <p className='project-type'>{props.type}</p>
+      <div className='project-content' onClick={() => window.open(props.links[1], "_blank")}>
+        <header className='project-heading'>
+          <div className='project-top'>
+            <p className='project-type'>{props.type}</p>
+            <div className='project-links'>
+              <a href={props.links[0]} target='_blank' rel='noreferrer'>
+                <FaGithub />
+              </a>
+              <a href={props.links[1]} target='_blank' rel='noreferrer'>
+                <FaExternalLinkAlt />
+              </a>
+            </div>
+          </div>
           <h3 className='project-title'>
             <a href='www.google.com'>
               {props.title}
             </a>
           </h3>
-        </div>
-        <div className='project-mid'>
           <div className='project-description'>
-            <p>A web app for visualizing personalized Spotify data. View your top artists, top and detailed audio information about each track.</p>
+            <p>{props.description}</p>
           </div>
+        </header>
+        <footer>
           <ul className='project-stack'>
             {props.stack &&
-              props.stack.map((s: any, i: number) => (
-                <li key={i}>{s.text}</li>
+              props.stack.map((s: string, i: number) => (
+                <li key={i}>{s}</li>
             ))}
           </ul>
-          <div className='project-links'>
-            <a href='www.google.com'>
-              Link
-            </a>
-            <a href='www.google.com'>
-              Link
-            </a>
-          </div>
-        </div>
+        </footer>
       </div>
     </StyledProjectCard>
   );
-
-  // return (
-  //   <StyledProjectCard {...props}>
-  //     <div className="project-inner">
-  //       <header>
-  //         <div className="project-top">
-  //           <div className="folder">
-  //             <p>fol</p>
-  //           </div>
-  //           <div className="project-links">
-  //             <a aria-label="GitHub Link" target="_blank" rel="noreferrer">
-  //               <p>gh</p>
-  //             </a>
-  //             <a
-  //               aria-label="External Link"
-  //               className="external"
-  //               target="_blank"
-  //               rel="noreferrer">
-  //               <p>ex</p>
-  //             </a>
-  //           </div>
-  //         </div>
-
-  //         <h3 className="project-title">
-  //           <a target="_blank" rel="noreferrer">
-  //             {props.title}
-  //           </a>
-  //         </h3>
-
-  //       </header>
-
-  //       <footer>
-  //         {props.stack && (
-  //           <ul className="project-tech-list">
-  //             {props.stack.map((t: any, i: number) => (
-  //               <li key={i}>test</li>
-  //             ))}
-  //           </ul>
-  //         )}
-  //       </footer>
-  //     </div>
-  //   </StyledProjectCard>
-  // );
 };
