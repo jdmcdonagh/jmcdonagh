@@ -33,7 +33,7 @@ export default function App() {
     <ThemeModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <Router basename='/jmcdonagh.com'>
+        <Router>
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/projects" element={<Homepage />}/>
