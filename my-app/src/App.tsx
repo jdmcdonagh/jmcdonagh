@@ -33,7 +33,12 @@ export default function App() {
     <ThemeModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <Homepage />
+        <Router>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/projects" element={<Homepage />}/>
+          </Routes>
+        </Router>
       </ThemeProvider>
     </ThemeModeContext.Provider>
   );
