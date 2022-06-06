@@ -22,7 +22,7 @@ export const projectData: Project[] = [
       'HPC', 
       'FEM',
     ],
-    github: 'https://github.com/jdmcdonagh',
+    github: 'https://github.com/jdmcdonagh/PMSMx',
     external: 'https://doi.org/10.1016/j.finel.2022.103755',
   },
   {
@@ -34,7 +34,7 @@ export const projectData: Project[] = [
       'CAD/CAM',
       'Manufacturing',
     ],
-    github: 'https://github.com/jdmcdonagh/3D-Printing',
+    github: 'https://github.com/jdmcdonagh/e-nable',
     external: 'https://enablingthefuture.org',
   },
   {
@@ -47,7 +47,7 @@ export const projectData: Project[] = [
       'styled-components',
       'GitHub Pages',
     ],
-    github: 'https://github.com/jdmcdonagh/react-site',
+    github: 'https://github.com/jdmcdonagh/jmcdonagh.com',
     external: 'https://jmcdonagh.com',
   },
 ];

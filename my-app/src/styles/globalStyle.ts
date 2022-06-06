@@ -32,9 +32,12 @@ export const GlobalStyles = createGlobalStyle(({theme}: {theme: Theme}) => (`
     width: 100%;
     min-height: 100%;
     overflow-x: hidden;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
     line-height: 1.3;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     
     @media (max-width: 480px) {
       font-size: var(--fz-lg);
@@ -43,6 +46,11 @@ export const GlobalStyles = createGlobalStyle(({theme}: {theme: Theme}) => (`
     &.hidden {
       overflow: hidden;
     }
+  }
+
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
   }
 
   /* Scrollbar */
