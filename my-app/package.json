@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
-  "homepage": "https://jdmcdonagh.github.io/my-app",
+  "homepage": "https://jdmcdonagh.github.io/jmcdonagh.com",
   "private": true,
   "dependencies": {
     "@types/node": "^16.11.38",
