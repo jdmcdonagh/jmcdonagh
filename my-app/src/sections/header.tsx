@@ -87,18 +87,22 @@ export default function Header() {
     {
       icon: <FaGithub />,
       link: ghLink,
+      newTab: true,
     },
     {
       icon: <FaLinkedinIn />,
       link: liLink,
+      newTab: true,
     },
     {
       icon: <FaEnvelope />,
       link: emLink,
+      newTab: false,
     },
     {
       icon: <FaFileAlt />,
       link: liLink,
+      newTab: true,
     },
   ];
 
@@ -111,7 +115,7 @@ export default function Header() {
         {links &&
           links.map((l: any, i: number) => (
             <Links key={i} ref={el => revealIcons.current[i] = el}>
-              <a href={l.link} target='_blank' rel='noreferrer'>
+              <a href={l.link} target={l.newTab && '_blank'} rel={l.newTab && 'noopener noreferrer'}>
                {l.icon}
               </a>
             </Links>
