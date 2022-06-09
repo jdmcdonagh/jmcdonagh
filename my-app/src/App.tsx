@@ -5,6 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import { Homepage } from './pages/homepage';
+import { LifeInWeeks } from './pages/lifeInWeeks';
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from './styles/theme';
 import { GlobalStyles } from './styles/globalStyle';
@@ -37,6 +38,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/projects" element={<Homepage />}/>
+            <Route path="/my-life-in-weeks" element={<LifeInWeeks />}/>
           </Routes>
         </Router>
       </ThemeProvider>
