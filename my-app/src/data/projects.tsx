@@ -54,10 +54,10 @@ export const projectData: Project[] = [
   {
     type: 'Volunteering',
     title: 'STEM Ambassador',
-    description: 'Personal website developed from the ground up using React to host my projects on.',
+    description: '400+ hours supporting activities that promote science, technology, engineering, and maths careers to children across the UK.',
     stack: [
-      'Science Communication', 
-      'Leadership', 
+      'Science Communication',
+      'Leadership',
       'Mentorship',
     ],
     github: 'https://github.com/jdmcdonagh/jmcdonagh.com',
