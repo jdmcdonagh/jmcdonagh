@@ -58,7 +58,7 @@ export const projectData: Project[] = [
     stack: [
       'Science Communication',
       'Leadership',
-      'Mentorship',
+      'Mentoring',
     ],
     github: 'https://github.com/jdmcdonagh/jmcdonagh.com',
     external: 'https://www.stem.org.uk/stem-ambassadors',
