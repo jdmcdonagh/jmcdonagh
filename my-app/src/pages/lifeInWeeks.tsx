@@ -3,7 +3,7 @@ import { lifeData } from '../data/lifeInWeeks';
 import { Theme } from '../styles/theme';
 import styled from 'styled-components';
 
-const YEARS = Math.round(Math.abs(lifeData.at(-1)!.date.getTime() - lifeData[0].date.getTime()) / (1000*60*60*24*7*52)) + 1;
+const YEARS = Math.ceil(Math.abs(lifeData.at(-1)!.date.getTime() - lifeData[0].date.getTime()) / (1000*60*60*24*7*52));
 const WEEKS = 52;
 const W_LABEL_INTERVAL = 4;
 const GRID_SIZE = '1vw';
@@ -66,7 +66,7 @@ export const LifeInWeeks = () => {
   function getWeeks(data: any[], totalYears=80) {
     let output: string[] = [];
     for (let i=1; i<data.length ; ++i) {
-      const ws = getWeeksDiff(data[i-1]['date'], data[i]['date']) - 1;
+      const ws = getWeeksDiff(data[i-1]['date'], data[i]['date']);
       const arr = new Array(ws); for (let j=0; j<ws; ++j) arr[j] = data[i]['color'];
       output = output.concat(arr);
     }
@@ -79,7 +79,7 @@ export const LifeInWeeks = () => {
   }
   
   function getWeeksDiff(startDate: any, endDate: any) {
-    const msInWeek = 1000 * 60 * 60 * 24 * 7;
+    const msInWeek = 1000 * 60 * 60 * 24 * 7.023076923;
     return Math.round(Math.abs(endDate - startDate) / msInWeek);
   }
   
