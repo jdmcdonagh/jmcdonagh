@@ -99,11 +99,11 @@ export default function Header() {
       link: emLink,
       newTab: false,
     },
-    {
-      icon: <FaFileAlt />,
-      link: liLink,
-      newTab: true,
-    },
+    // {
+    //   icon: <FaFileAlt />,
+    //   link: liLink,
+    //   newTab: true,
+    // },
   ];
 
   return (
