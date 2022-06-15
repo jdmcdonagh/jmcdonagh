@@ -40,7 +40,7 @@ export const projectData: Project[] = [
   {
     type: 'Personal Project',
     title: 'AWS DeepRacer',
-    description: 'Competitor in the league that uses reinforcement learning to develop the fastest automonous racecar.',
+    description: 'Competitor in the league that uses reinforcement learning to develop the fastest autonomous racecar.',
     stack: [
       'AWS', 
       'Py3', 
