@@ -114,7 +114,7 @@ export const ProjectCard = ({...props}: any)  => {
             </div>
           </div>
           <h3 className='project-title'>
-            <a href='www.google.com'>
+            <a>
               {props.title}
             </a>
           </h3>

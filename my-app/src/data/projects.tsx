@@ -39,6 +39,43 @@ export const projectData: Project[] = [
   },
   {
     type: 'Personal Project',
+    title: 'AWS DeepRacer',
+    description: 'Competitor in the league that uses reinforcement learning to develop the fastest autonomous racecar.',
+    stack: [
+      'AWS', 
+      'Py3', 
+      'Artificial Intelligence (AI)',
+      'Machine Learning (ML)',
+      'Vehicle Dynamics',
+    ],
+    github: 'https://github.com/jdmcdonagh/AWS-DeepRacer-SpotScheduler',
+    external: 'https://aws.amazon.com/deepracer',
+  },
+  {
+    type: 'Volunteering',
+    title: 'STEM Ambassador',
+    description: '500+ hours supporting activities that promote science, technology, engineering, and maths careers to children across the UK.',
+    stack: [
+      'Science Communication',
+      'Leadership',
+      'Mentoring',
+    ],
+    github: 'https://github.com/jdmcdonagh/STEM-Ambassador',
+    external: 'https://www.stem.org.uk/stem-ambassadors',
+  },
+  {
+    type: 'Personal Project',
+    title: 'My Life in Weeks',
+    description: 'Interactive webpage that graphically displays the major stages of my life by week.',
+    stack: [
+      'React', 
+      'TypeScript',
+    ],
+    github: 'https://github.com/jdmcdonagh/jmcdonagh.com',
+    external: '/my-life-in-weeks',
+  },
+  {
+    type: 'Personal Project',
     title: 'jmcdonagh.com',
     description: 'Personal website developed from the ground up using React to host my projects on.',
     stack: [
