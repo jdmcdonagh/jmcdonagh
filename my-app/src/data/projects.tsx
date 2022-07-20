@@ -48,19 +48,19 @@ export const projectData: Project[] = [
       'Machine Learning (ML)',
       'Vehicle Dynamics',
     ],
-    github: 'https://github.com/jdmcdonagh/AWS-DeepRacer',
+    github: 'https://github.com/jdmcdonagh/AWS-DeepRacer-SpotScheduler',
     external: 'https://aws.amazon.com/deepracer',
   },
   {
     type: 'Volunteering',
     title: 'STEM Ambassador',
-    description: '400+ hours supporting activities that promote science, technology, engineering, and maths careers to children across the UK.',
+    description: '500+ hours supporting activities that promote science, technology, engineering, and maths careers to children across the UK.',
     stack: [
       'Science Communication',
       'Leadership',
       'Mentoring',
     ],
-    github: 'https://github.com/jdmcdonagh/jmcdonagh.com',
+    github: 'https://github.com/jdmcdonagh/STEM-Ambassador',
     external: 'https://www.stem.org.uk/stem-ambassadors',
   },
   {
